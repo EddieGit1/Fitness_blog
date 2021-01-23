@@ -20,8 +20,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'BlogItemController@index')->name('home');
-Route::post('/home', 'BlogItemController@store');
-Route::get('/create', 'BlogItemController@create')->name('create');
-//Route::get('/home/{blog}', 'BlogItemController@show')->name('blog.show');
+Route::get('/home', 'WorkoutItemController@index')->name('home');
+Route::post('/home', 'WorkoutItemController@store');
+
+Route::get('/create', 'WorkoutItemController@create')->name('create');
+Route::get('{id}', 'WorkoutItemController@show')->name('show');
+
+Route::get('{id}/edit', 'WorkoutItemController@edit')->name('edit');
+Route::patch('{id}', 'WorkoutItemController@update')->name('update');
+
+Route::get('{id}/delete', 'WorkoutItemController@destroy')->name('destroy');
+
+//Route::view('/edit', 'edit');
+
+
 
