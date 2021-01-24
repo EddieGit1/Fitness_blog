@@ -7,7 +7,6 @@
                 <div class="card">
                     <div class="card-header">{{ __('Detail Workout') }}</div>
                     <a href="{{ route('create') }}">Create new Routine</a>
-
                     <h2>My workout routine</h2>
                     <p>{{ $workoutItem -> full_name }}</p>
                     <p>{{ $workoutItem -> workout_title}}</p>
@@ -19,7 +18,6 @@
                     <p>{{ $workoutItem -> friday}}</p>
                     <p>{{ $workoutItem -> saterday}}</p>
                     <p>{{ $workoutItem -> sunday}}</p>
-
                 </div>
             </div>
         </div>

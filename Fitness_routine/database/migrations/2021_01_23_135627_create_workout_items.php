@@ -15,6 +15,7 @@ class CreateWorkoutItems extends Migration
     {
         Schema::create('workout_items', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('full_name', 50);
             $table->string('workout_title',50);
             $table->bigInteger('category_id')->unsigned();
@@ -26,6 +27,10 @@ class CreateWorkoutItems extends Migration
             $table->string('saterday', 255);
             $table->string('sunday', 255);
             $table->timestamps();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
         Schema::table('workout_items', function (Blueprint $table) {
             $table->foreign('category_id')->references('id')->on('categories');
