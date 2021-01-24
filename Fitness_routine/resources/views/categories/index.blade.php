@@ -10,7 +10,7 @@
     <div class="container">
         <ul>
         @foreach($categories as $category)
-            <h3 class="routine" id="{{ $category->name }}">{{ $category->name }}</h3>
+            <h3 class="routine" id="{{ $category->name }}">{{ $category->name }}:</h3>
             <div class="row">
                 <table id="routine">
                     @foreach($category->workoutItems as $workoutItem)
