@@ -6,12 +6,24 @@ use App\Category;
 use App\WorkoutItem;
 use http\Params;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WorkoutItemController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function profile(){
+        $workoutItems = WorkoutItem::all()->whereIn('user_id', Auth::id());
+        return view('profile', compact('workoutItems'));
+    }
+
     public function index()
     {
+
         //
         $workoutItems = WorkoutItem::all();
         return view('home', compact('workoutItems'));
@@ -63,6 +75,9 @@ class WorkoutItemController extends Controller
             'saterday' => $request->get('saterday'),
             'sunday' => $request->get('sunday'),
         ]);
+
+        $workoutItem->user_id = Auth::user()->id;
+
         $workoutItem->save();
 
         return redirect('/home')->with('succes', 'Post saved!');

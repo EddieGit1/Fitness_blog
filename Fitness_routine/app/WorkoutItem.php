@@ -8,6 +8,7 @@ class WorkoutItem extends Model
 {
     //
     protected $fillable = [
+        'user_id',
         'full_name',
         'workout_title',
         'category_id',
@@ -22,5 +23,9 @@ class WorkoutItem extends Model
 
     public function category(){
         return $this->belongsTo(Category::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }
